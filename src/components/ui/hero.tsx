@@ -59,7 +59,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mt-8 text-lg md:text-xl text-neutral-700 dark:text-neutral-300 max-w-2xl mx-auto"
         >
-          Crafting exceptional digital experiences through innovative design and cutting-edge technology.
+          Crafting exceptional digital experiences through innovative design and cutting-edge technology
         </motion.p>
 
         <motion.div
