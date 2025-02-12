@@ -1,0 +1,87 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Carousel } from '../components/ui/carousel';
+
+const title = "Web Development Portfolio - Recent Projects by WebCraft";
+const description = "Explore our portfolio of custom websites, landing pages, and e-commerce solutions. See how we've helped businesses achieve their online goals.";
+import { motion } from 'framer-motion';
+
+const projects = [
+		{
+		title: "Romanian Banquet Hall",
+		description: "A sophisticated online presence for a premier Romanian banquet hall",
+		image: "https://images.unsplash.com/photo-1487014679447-9f8336841d58?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
+		category: "Landing Page",
+		link: "https://www.romanianbanquethall.com/"
+	},
+  {
+		title: "Quality Work Granite",
+		description: "A professional showcase for high-quality granite products and services",
+		image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
+		category: "Landing Page",
+		link: "https://www.qwgranite.com/"
+	},
+	{
+		title: "Romanian Food Festival",
+		description: "An engaging platform celebrating the vibrant Romanian food festival",
+		image: "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
+		category: "Portfolio",
+		link: "https://www.romanianfoodfestival.org/"
+	},
+	{
+		title: "Church Fundraising",
+		description: "A dedicated website supporting church fundraising initiatives",
+		image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
+		category: "Business Website",
+		link: "https://fundraising-pogorarea-sfantului-duh.vercel.app/"
+	},
+	{
+		title: "True Tenant",
+		description: "A modern platform page connecting landlords with their ideal tenants",
+		image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
+		category: "Landing Page",
+		link: "https://www.trutenant.com/"
+	}
+];
+---
+
+<Layout title={title}>
+	<main class="pt-20">
+		<section class="relative py-20 bg-gray-900 overflow-hidden">
+			<div class="absolute inset-0 bg-grid-white/[0.2] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+			<div class="container mx-auto px-4">
+				<h1 class="text-5xl font-bold text-center mb-6">
+					<span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-gradient">
+						Our Portfolio
+					</span>
+				</h1>
+				<p class="text-xl text-gray-300 text-center max-w-3xl mx-auto mb-16">
+					Explore our latest projects and see how we've helped businesses transform their online presence.
+				</p>
+				<div class="max-w-5xl mx-auto">
+					<Carousel items={projects} client:load />
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA Section -->
+		<section class="py-20 bg-gray-800">
+			<div class="container mx-auto px-4 text-center">
+				<h2 class="text-4xl font-bold mb-6">
+					<span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-gradient">
+						Ready to Start Your Project?
+					</span>
+				</h2>
+				<p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+					Let's create something amazing together. Contact us today to discuss your vision.
+				</p>
+				<a 
+					href="/contact" 
+					class="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white px-8 py-3 rounded-lg hover:opacity-90 transition inline-block"
+				>
+					Get Started
+				</a>
+			</div>
+		</section>
+	</main>
+</Layout>

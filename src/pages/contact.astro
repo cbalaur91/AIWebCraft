@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { ContactForm } from '../components/ui/contact-form';
+
+const title = "Contact WebCraft - Get Started with Your Web Project";
+const description = "Contact our web development team to discuss your project. Free consultation for custom websites, landing pages, and e-commerce solutions.";
+---
+
+<Layout title={title}>
+	<main class="pt-20">
+		<section class="relative py-20 bg-gray-900 overflow-hidden">
+			<div class="absolute inset-0 bg-grid-white/[0.2] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+			<div class="container mx-auto px-4">
+				<h1 class="text-5xl font-bold text-center mb-6">
+					<span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-gradient">
+						Contact Us
+					</span>
+				</h1>
+				<p class="text-xl text-gray-300 text-center max-w-3xl mx-auto mb-16">
+					Ready to start your project? We'd love to hear from you. Get in touch with us using the form below.
+				</p>
+				
+				<div class="max-w-3xl mx-auto">
+					<div class="relative">
+						<div class="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 blur-3xl -z-10" />
+						<div class="bg-gray-800/50 p-8 rounded-lg backdrop-blur-sm border border-gray-700/50">
+						<ContactForm client:load />
+						</div>
+					</div>
+
+					<div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+						<div class="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 blur-3xl -z-10" />
+						<div class="text-center bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300">
+							<h3 class="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400 mb-2">Email</h3>
+							<p class="text-gray-300">aiwebcraftinfo@gmail.com</p>
+						</div>
+						<div class="text-center bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300">
+							<h3 class="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400 mb-2">Phone</h3>
+							<p class="text-gray-300">(734) 341-6746</p>
+						</div>
+						<div class="text-center bg-gray-800/50 p-6 rounded-lg backdrop-blur-sm border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300">
+							<h3 class="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-blue-400 mb-2">Office Hours</h3>
+							<p class="text-gray-300">Mon-Fri: 9am - 6pm EST</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>

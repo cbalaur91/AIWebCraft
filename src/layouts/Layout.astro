@@ -1,0 +1,41 @@
+---
+import '../styles/globals.css';
+import { Navbar } from '../components/ui/navbar';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Expert web development services for startups and businesses. Custom websites, landing pages, and e-commerce solutions. SEO-optimized, mobile-responsive designs." />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="keywords" content="web development, custom websites, landing pages, portfolio sites, business websites, SEO optimization, responsive design, professional web services" />
+		<meta name="author" content="WebCraft Development Team" />
+		<meta name="robots" content="index, follow" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content="Expert web development services for startups and businesses. Custom websites, landing pages, and e-commerce solutions." />
+		<meta property="og:type" content="website" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content="Expert web development services for startups and businesses. Custom websites, landing pages, and e-commerce solutions." />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<Navbar client:load />
+		<slot />
+		<footer class="py-6 bg-gray-900">
+			<div class="container mx-auto px-4 text-center">
+				<p class="text-gray-400 text-sm">Powered by <a href="https://webcraft.dev" class="text-purple-400 hover:text-purple-300">WebCraft</a></p>
+			</div>
+		</footer>
+	</body>
+</html>
