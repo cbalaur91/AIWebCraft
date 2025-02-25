@@ -11,21 +11,21 @@ interface Review {
 
 const reviews: Review[] = [
   {
-    name: "John Smith",
+    name: "Anya Solari",
     company: "Tech Innovators",
-    review: "WebCraft delivered an exceptional website that perfectly captures our brand. Their attention to detail and professional approach exceeded our expectations.",
+    review: "AiWebHub delivered an exceptional website that perfectly captures our brand. Their attention to detail and professional approach exceeded our expectations.",
     rating: 5
   },
   {
-    name: "Sarah Williams",
+    name: "Kai Jensen",
     company: "Creative Studio",
-    review: "The team at WebCraft was fantastic to work with. They transformed our vision into a beautiful, functional website that has significantly improved our online presence.",
+    review: "The team at AiWebHub was fantastic to work with. They transformed our vision into a beautiful, functional website that has significantly improved our online presence.",
     rating: 5
   },
   {
-    name: "Michael Chen",
+    name: "Elias Vega",
     company: "Startup Founder",
-    review: "Working with WebCraft was a game-changer for our business. Their expertise in web development helped us create a powerful online platform that drives results.",
+    review: "Working with AiWebHub was a game-changer for our business. Their expertise in web development helped us create a powerful online platform that drives results.",
     rating: 5
   }
 ]
