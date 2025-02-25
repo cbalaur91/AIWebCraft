@@ -53,6 +53,7 @@ export function ContactForm() {
 
       reset()
       alert("Thank you for your message! We'll get back to you soon.");
+      window.location.href = '/';
     } catch (error) {
       console.error("Error submitting form:", error);
       alert("Sorry, there was a problem sending your message. Please try again or email us directly at aiwebcraftinfo@gmail.com");
