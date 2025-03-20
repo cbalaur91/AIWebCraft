@@ -10,7 +10,7 @@ const tabs = [
   { id: "home", label: "Home", href: "/" },
   { id: "services", label: "Services", href: "/services" },
   { id: "portfolio", label: "Portfolio", href: "/portfolio" },
-  { id: "team", label: "Team", href: "/team" },
+  //{ id: "team", label: "Team", href: "/team" },
   { id: "about", label: "About", href: "/about" },
   { id: "contact", label: "Contact", href: "/contact" },
 ]
@@ -52,7 +52,10 @@ export function Navbar() {
   return (
     <nav className="fixed w-full bg-gray-900/95 backdrop-blur-sm z-50 py-4">
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <a href="/" className="text-2xl font-bold text-white">AiWebHub</a>
+        <a href="/" className="flex items-center text-2xl font-bold text-white">
+          <img src="/logo.jpeg" alt="Logo" className="h-8 w-8 mr-2" />
+          AiWebHub
+        </a>
         <div className="hidden md:flex space-x-2">
           {tabs.map((tab) => (
             <a
