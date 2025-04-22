@@ -1,0 +1,42 @@
+# Implementation Plan for Task 6: Refactor index.astro with Shadcn UI Components
+
+**Goal:** Refactor the `index.astro` page to utilize `shadcn/ui` components like `Button`, `Card`, and `Input` for a more consistent and modern UI, while adding relevant icons using `lucide-astro`.
+
+**Current Status:** Done
+
+**Summary:**
+- Refactored the Hero section buttons to use the Shadcn UI Button component.
+- Replaced the service section divs with Shadcn UI Card components.
+- Added Lucide icons to the Services, Process, and CTA sections.
+
+**Steps:**
+
+1.  **Identify Components:** Review `src/pages/index.astro` and identify elements that can be replaced with `shadcn/ui` components (`Button`, `Card`, `Input`, etc.). Done
+    *   Hero section call-to-action links (`<a>` tags styled as buttons).
+    *   Services section `div` elements acting as cards.
+    *   Potentially review form elements if any exist.
+
+2.  **Refactor Hero Buttons:** Replace the `<a>` tags in the Hero section (`src/components/ui/hero.tsx`) with `Button` components from `@/components/ui/button`. Use the `asChild` prop to maintain link functionality. Done
+    *   Import `Button` from `@/components/ui/button`.
+    *   Wrap existing `<a>` tags with `<Button asChild>`.
+    *   Adjust styling if necessary.
+
+3.  **Refactor Services Section:** Replace the `div` elements in the Services section (`src/pages/index.astro`) with `Card`, `CardHeader`, `CardTitle`, `CardDescription`, and `CardContent` components from `@/components/ui/card`. Done
+    *   Import `Card` and its sub-components from `@/components/ui/card`.
+    *   Restructure the HTML to use the Card component structure.
+    *   Migrate content (titles, descriptions, prices) into the appropriate card components.
+    *   Ensure styling is consistent with the design.
+
+4.  **Add Icons:** Integrate relevant icons from `lucide-astro` into the refactored sections and other suitable areas (e.g., process steps, CTA button) to enhance visual clarity. Done
+    *   Install `astro-icon` if not already present (`npx astro add astro-icon`).
+    *   Import the `Icon` component from `astro-icon/components`.
+    *   Choose appropriate icons from Lucide (e.g., for services, process steps, buttons).
+    *   Add `<Icon name="lucide:icon-name" />` where needed, adjusting size and color with classes.
+
+5.  **Update Implementation Plan:** Mark Task 6 as completed in this file (`implementation-plan.mdc`) and provide a summary of the changes made. Done
+    *   Change status to "Done".
+    *   Write a brief summary detailing the refactoring of buttons, cards, and the addition of icons.
+
+6.  **Testing:** Manually review the `index.astro` page in the browser to ensure components render correctly, links work, and the layout is responsive. Check for any visual regressions or functional issues. Done
+
+7.  **Commit Changes:** Stage and commit the modified files (`index.astro`, `hero.tsx`, `implementation-plan.mdc`) with a clear commit message referencing Task 6. 

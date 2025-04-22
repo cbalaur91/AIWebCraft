@@ -1,0 +1,33 @@
+# Implementation Plan for Task 7: Refactor Secondary Pages with Shadcn UI Components
+
+**Goal:** Apply Shadcn UI components (`Button`, `Card`, `Icon`) consistently across secondary pages (`portfolio.astro`, `services.astro`, `about.astro`) to match the refactored homepage and contact form.
+
+**Current Status:** Done
+
+**Summary:**
+- Refactored the CTA button on `portfolio.astro` using `Button` and `Icon`.
+- Corrected an `Icon` import path error on `portfolio.astro`.
+- Refactored the CTA button and service feature lists (using `Icon`) on `services.astro`.
+- Refactored service description blocks on `services.astro` using `Card` components.
+- Refactored the "Why Choose Us?" section and the CTA button on `about.astro` using `Card` and `Button` components.
+
+**Steps:**
+
+1.  **Identify Secondary Pages:** Listed potential secondary pages (`portfolio.astro`, `services.astro`, `about.astro`). Done.
+2.  **Refactor `portfolio.astro`:**
+    *   Identified CTA button as the main refactoring target. Done.
+    *   Replaced `<a>` tag with `Button` component using `asChild` prop. Done.
+    *   Added `lucide:send` icon to the button. Done.
+    *   Corrected `Icon` import path. Done.
+3.  **Refactor `services.astro`:**
+    *   Identified service description blocks, feature list checkmarks, and CTA button for refactoring. Done.
+    *   Replaced feature list checkmarks (`✓`) with `lucide:check` icons. Done.
+    *   Replaced CTA `<a>` tag with `Button` component using `asChild` prop and added `lucide:send` icon. Done.
+    *   Replaced service description `div`s with `Card`, `CardHeader`, `CardTitle`, `CardContent` components. Done.
+4.  **Refactor `about.astro`:**
+    *   Identified "Why Choose Us?" section `div`s and CTA button for refactoring. Done.
+    *   Replaced "Why Choose Us?" `div`s with `Card`, `CardHeader`, `CardTitle`, `CardContent` components. Done.
+    *   Replaced CTA `<a>` tag with `Button` component using `asChild` prop and added `lucide:send` icon. Done.
+5.  **Update Implementation Plan:** Mark Task 7 as completed in this file. Done.
+6.  **Testing:** Manually reviewed refactored pages (`portfolio.astro`, `services.astro`, `about.astro`) for correct rendering and functionality. Done.
+7.  **Commit Changes:** Stage and commit modified files (`portfolio.astro`, `services.astro`, `about.astro`, `implementation-plan-task7.mdc`) with a clear commit message referencing Task 7. 

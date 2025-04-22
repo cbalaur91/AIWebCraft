@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Carousel } from '../components/ui/carousel';
+import { Button } from '../components/ui/button';
+import { Icon } from 'astro-icon/components';
 
 const title = "Web Development Portfolio - Recent Projects by WebCraft";
 const description = "Explore our portfolio of custom websites, landing pages, and e-commerce solutions. See how we've helped businesses achieve their online goals.";
@@ -75,12 +77,11 @@ const projects = [
 				<p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
 					Let's create something amazing together. Contact us today to discuss your vision.
 				</p>
-				<a 
-					href="/contact" 
-					class="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white px-8 py-3 rounded-lg hover:opacity-90 transition inline-block"
-				>
-					Get Started
-				</a>
+				<Button asChild className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:opacity-90 transition">
+					<a href="/contact">
+						<Icon name="lucide:send" class="w-5 h-5 mr-2" /> Get Started
+					</a>
+				</Button>
 			</div>
 		</section>
 	</main>

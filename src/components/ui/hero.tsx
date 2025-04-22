@@ -2,6 +2,7 @@
 
 import React from "react"
 import { motion } from "framer-motion"
+import { Button } from "@/components/ui/button"
 
 const FloatingShape = ({ className }: { className?: string }) => (
   <motion.div
@@ -68,12 +69,16 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-8 flex flex-col md:flex-row gap-4 justify-center"
         >
-          <a href="/contact" className="px-6 py-3 rounded-lg bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white hover:opacity-90 transition">
-            Get Started
-          </a>
-          <a href="/portfolio" className="px-6 py-3 rounded-lg border border-purple-500 text-white hover:bg-purple-500/10 transition">
-            View Our Work
-          </a>
+          <Button asChild>
+            <a href="/contact">
+              Get Started
+            </a>
+          </Button>
+          <Button variant="outline" asChild>
+            <a href="/portfolio">
+              View Our Work
+            </a>
+          </Button>
         </motion.div>
       </div>
     </div>

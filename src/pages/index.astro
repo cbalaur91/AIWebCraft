@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import { Hero } from '../components/ui/hero';
 import { Review } from '../components/ui/review';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+import { Icon } from 'astro-icon/components';
 ---
 
 <Layout title="AiWebHub - Professional Web Development Services">
@@ -18,24 +20,44 @@ import { Review } from '../components/ui/review';
 					</span>
 				</h2>
 				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-					<div class="bg-gray-800/50 p-8 rounded-lg backdrop-blur-sm border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300">
-						<h3 class="text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400 mb-4">Professional Landing Pages</h3>
-						<p class="text-gray-300 mb-4">Custom-designed, high-converting landing pages optimized for lead generation and sales conversion. Perfect for product launches and marketing campaigns.</p>
-						<p class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Starting at $200</p>
-					</div>
-					<div class="bg-gray-800/50 p-8 rounded-lg backdrop-blur-sm border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300">
-						<h3 class="text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400 mb-4">Creative Portfolio Websites</h3>
-						<p class="text-gray-300 mb-4">Stunning portfolio websites that showcase your work with modern design, smooth animations, and responsive layouts. Ideal for creatives and professionals.</p>
-						<p class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Starting at $400</p>
-					</div>
-					<div class="bg-gray-800/50 p-8 rounded-lg backdrop-blur-sm border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300">
-						<h3 class="text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400 mb-4">Custom Business Websites</h3>
-						<p class="text-gray-300 mb-4">Full-featured business websites with SEO optimization, content management, e-commerce capabilities, and AI chatbot integration. Built to drive growth and establish your brand online.</p>
-						<p class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Starting at $800</p>
-					</div>
+					<Card>
+						<CardHeader>
+							<div class="flex items-center gap-4 mb-2">
+								<Icon name="lucide:target" class="w-8 h-8 text-purple-400" />
+								<CardTitle class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">Professional Landing Pages</CardTitle>
+							</div>
+						</CardHeader>
+						<CardContent>
+							<CardDescription class="mb-4">Custom-designed, high-converting landing pages optimized for lead generation and sales conversion. Perfect for product launches and marketing campaigns.</CardDescription>
+						</CardContent>
+					</Card>
+					<Card>
+						<CardHeader>
+							<div class="flex items-center gap-4 mb-2">
+								<Icon name="lucide:palette" class="w-8 h-8 text-purple-400" />
+								<CardTitle class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">Creative Portfolio Websites</CardTitle>
+							</div>
+						</CardHeader>
+						<CardContent>
+							<CardDescription class="mb-4">Stunning portfolio websites that showcase your work with modern design, smooth animations, and responsive layouts. Ideal for creatives and professionals.</CardDescription>
+						</CardContent>
+					</Card>
+					<Card>
+						<CardHeader>
+							<div class="flex items-center gap-4 mb-2">
+								<Icon name="lucide:building" class="w-8 h-8 text-purple-400" />
+								<CardTitle class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">Custom Business Websites</CardTitle>
+							</div>
+						</CardHeader>
+						<CardContent>
+							<CardDescription class="mb-4">Full-featured business websites with SEO optimization, content management, e-commerce capabilities, and AI chatbot integration. Built to drive growth and establish your brand online.</CardDescription>
+						</CardContent>
+					</Card>
 				</div>
 				<div class="mt-12 text-center">
-					<h3 class="text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400 mb-4">AI Integration Services</h3>
+					<h3 class="flex items-center justify-center gap-2 text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400 mb-4">
+						<Icon name="lucide:bot" class="w-6 h-6" /> AI Integration Services
+					</h3>
 					<p class="text-gray-300 max-w-2xl mx-auto">
 						Enhance your website with cutting-edge AI capabilities. We specialize in integrating intelligent chatbots and AI agents to provide 24/7 customer support, automate tasks, and create personalized user experiences.
 					</p>
@@ -65,28 +87,28 @@ import { Review } from '../components/ui/review';
 				<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
 					<div class="text-center">
 						<div class="w-16 h-16 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 hover:scale-110 transition-transform duration-300">
-							<span class="text-2xl font-bold text-white">1</span>
+							<Icon name="lucide:search" class="w-8 h-8 text-white" />
 						</div>
 						<h3 class="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400 mb-2">Discovery</h3>
 						<p class="text-gray-300">Understanding your needs and goals</p>
 					</div>
 					<div class="text-center">
 						<div class="w-16 h-16 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 hover:scale-110 transition-transform duration-300">
-							<span class="text-2xl font-bold text-white">2</span>
+							<Icon name="lucide:palette" class="w-8 h-8 text-white" />
 						</div>
 						<h3 class="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400 mb-2">Design</h3>
 						<p class="text-gray-300">Creating the perfect look for your brand</p>
 					</div>
 					<div class="text-center">
 						<div class="w-16 h-16 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 hover:scale-110 transition-transform duration-300">
-							<span class="text-2xl font-bold text-white">3</span>
+							<Icon name="lucide:code" class="w-8 h-8 text-white" />
 						</div>
 						<h3 class="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400 mb-2">Development</h3>
 						<p class="text-gray-300">Building your website with care</p>
 					</div>
 					<div class="text-center">
 						<div class="w-16 h-16 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 hover:scale-110 transition-transform duration-300">
-							<span class="text-2xl font-bold text-white">4</span>
+							<Icon name="lucide:rocket" class="w-8 h-8 text-white" />
 						</div>
 						<h3 class="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400 mb-2">Launch</h3>
 						<p class="text-gray-300">Going live with your new website</p>
@@ -133,9 +155,9 @@ import { Review } from '../components/ui/review';
 				</p>
 				<a 
 					href="/contact" 
-					class="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white px-8 py-3 rounded-lg hover:opacity-90 transition inline-block"
+					class="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white px-8 py-3 rounded-lg hover:opacity-90 transition inline-flex items-center gap-2"
 				>
-					Contact Us
+					<Icon name="lucide:send" class="w-5 h-5" /> Contact Us
 				</a>
 			</div>
 		</section>

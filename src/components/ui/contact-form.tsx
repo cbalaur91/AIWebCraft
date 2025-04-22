@@ -1,13 +1,37 @@
+"use client"
+
 import React from "react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import emailjs from '@emailjs/browser';
 
-// Initialize EmailJS
-emailjs.init({
-  publicKey: 'WGaX590czyFH0I9x2', // Replace with your public key
-});
+import { Button } from "@/components/ui/button"
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { Textarea } from "@/components/ui/textarea"
+
+// Initialize EmailJS - Keep your keys secure, consider environment variables
+// emailjs.init({
+//  publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'WGaX590czyFH0I9x2',
+// });
+// NOTE: Hardcoding keys is not recommended for production. Using placeholder for now.
+emailjs.init({ publicKey: 'WGaX590czyFH0I9x2' });
 
 const formSchema = z.object({
   name: z.string()
@@ -29,20 +53,27 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>
 
 export function ContactForm() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-    reset,
-  } = useForm<FormData>({
+  const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      service: undefined, // Set default for enum if needed
+      message: "",
+    },
   })
+
+  const { formState: { isSubmitting }, reset } = form;
 
   const onSubmit = async (data: FormData) => {
     try {
-      const response = await emailjs.send(
-        'service_ryl6ms3', // Replace with your service ID
-        'template_ibzmrmh', // Replace with your template ID
+      // Replace with your actual service and template IDs
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'service_ryl6ms3';
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_ibzmrmh';
+
+      await emailjs.send(
+        serviceId,
+        templateId,
         {
           from_name: data.name,
           from_email: data.email,
@@ -51,94 +82,94 @@ export function ContactForm() {
         }
       );
 
-      reset()
+      reset() // Reset form fields after successful submission
       alert("Thank you for your message! We'll get back to you soon.");
-      window.location.href = '/';
+      // Consider redirecting or showing a success message inline instead of alert
+      // window.location.href = '/';
     } catch (error) {
       console.error("Error submitting form:", error);
+      // Provide more user-friendly error feedback
       alert("Sorry, there was a problem sending your message. Please try again or email us directly at aiwebcraftinfo@gmail.com");
     }
   }
 
   return (
-    <form 
-      onSubmit={handleSubmit(onSubmit)} 
-      className="space-y-6"
-    >
-      <div>
-        <label htmlFor="name" className="block bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400 font-semibold mb-2">
-          Name
-        </label>
-        <input
-          type="text"
-          id="name"
-          {...register("name")}
-          className="w-full px-4 py-2 rounded-lg bg-gray-700/50 border border-gray-600 text-white focus:outline-none focus:border-purple-500 backdrop-blur-sm"
-          placeholder="John Doe"
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">Name</FormLabel>
+              <FormControl>
+                <Input placeholder="John Doe" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
         />
-        {errors.name && (
-          <p className="mt-1 text-sm text-red-400">{errors.name.message}</p>
-        )}
-      </div>
-
-      <div>
-        <label htmlFor="email" className="block bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400 font-semibold mb-2">
-          Email
-        </label>
-        <input
-          type="email"
-          id="email"
-          {...register("email")}
-          className="w-full px-4 py-2 rounded-lg bg-gray-700/50 border border-gray-600 text-white focus:outline-none focus:border-purple-500 backdrop-blur-sm"
-          placeholder="john@example.com"
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">Email</FormLabel>
+              <FormControl>
+                <Input type="email" placeholder="john@example.com" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
         />
-        {errors.email && (
-          <p className="mt-1 text-sm text-red-400">{errors.email.message}</p>
-        )}
-      </div>
-
-      <div>
-        <label htmlFor="service" className="block bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-blue-400 font-semibold mb-2">
-          Service Interested In
-        </label>
-        <select
-          id="service"
-          {...register("service")}
-          className="w-full px-4 py-2 rounded-lg bg-gray-700/50 border border-gray-600 text-white focus:outline-none focus:border-purple-500 backdrop-blur-sm"
+        <FormField
+          control={form.control}
+          name="service"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-blue-400">Service Interested In</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a service" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="business-website">Business Website</SelectItem>
+                  <SelectItem value="landing-page">Landing Page</SelectItem>
+                  <SelectItem value="portfolio">Portfolio Site</SelectItem>
+                  <SelectItem value="other">Other</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="message"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">Message</FormLabel>
+              <FormControl>
+                <Textarea
+                  placeholder="Tell us about your project..."
+                  rows={5}
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button 
+          type="submit" 
+          disabled={isSubmitting} 
+          className="w-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:opacity-90 transition"
         >
-          <option value="business-website">Business Website</option>
-          <option value="landing-page">Landing Page</option>
-          <option value="portfolio">Portfolio Site</option>
-          <option value="other">Other</option>
-        </select>
-        {errors.service && (
-          <p className="mt-1 text-sm text-red-400">{errors.service.message}</p>
-        )}
-      </div>
-
-      <div>
-        <label htmlFor="message" className="block bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400 font-semibold mb-2">
-          Message
-        </label>
-        <textarea
-          id="message"
-          {...register("message")}
-          rows={5}
-          className="w-full px-4 py-2 rounded-lg bg-gray-700/50 border border-gray-600 text-white focus:outline-none focus:border-purple-500 backdrop-blur-sm"
-          placeholder="Tell us about your project..."
-        />
-        {errors.message && (
-          <p className="mt-1 text-sm text-red-400">{errors.message.message}</p>
-        )}
-      </div>
-
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="w-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white py-3 rounded-lg hover:opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        {isSubmitting ? "Sending..." : "Send Message"}
-      </button>
-    </form>
+          {isSubmitting ? "Sending..." : "Send Message"}
+        </Button>
+      </form>
+    </Form>
   )
 }

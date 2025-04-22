@@ -1,0 +1,25 @@
+# Implementation Plan for Task 8: Implement Forms with Shadcn UI
+
+**Goal:** Refactor the contact form (`src/components/ui/contact-form.tsx`) to use Shadcn UI components (`Input`, `Select`, `Textarea`, `Button`) and the standard Shadcn form structure.
+
+**Current Status:** Done
+
+**Summary:**
+- Identified the contact form in `src/pages/contact.astro` which uses the `ContactForm` component.
+- Analyzed `ContactForm` and confirmed it uses `react-hook-form` and standard HTML elements.
+- Installed necessary Shadcn UI components (`Select`, `Textarea`).
+- Refactored `ContactForm` to use `Form`, `FormField`, `FormItem`, `FormLabel`, `FormControl`, `FormMessage`, `Input`, `Select`, `Textarea`, and `Button`.
+- Addressed console warnings by wrapping `Input` and `Textarea` components with `React.forwardRef`.
+
+**Steps:**
+
+1.  **Identify Forms:** Locate forms across the website. Done (Found `ContactForm` in `src/components/ui/contact-form.tsx` used by `contact.astro`).
+2.  **Add Shadcn Form Components:** Install required `shadcn/ui` components not already present (`select`, `textarea`). Done (`npx shadcn@latest add select textarea`).
+3.  **Refactor Form Structure:** Replace standard HTML form elements in `ContactForm` with their `shadcn/ui` equivalents, using the standard `Form`, `FormField`, etc., structure. Done.
+4.  **Implement Form Validation:** Retained existing `zod` validation schema. Done.
+5.  **Style Form Elements:** Ensured styling used the default Shadcn UI component styles. Done.
+6.  **Ensure Responsiveness:** Relied on default Shadcn UI responsiveness. Done.
+7.  **Fix Ref Forwarding:** Wrapped `Input` and `Textarea` components with `React.forwardRef` to resolve console warnings. Done.
+8.  **Update Implementation Plan:** Mark Task 8 as completed in this file. Done.
+9.  **Testing:** Manually verified form rendering and functionality. Done.
+10. **Commit Changes:** Stage and commit modified files (`contact-form.tsx`, `input.tsx`, `textarea.tsx`, `implementation-plan-task8.mdc`) with a clear commit message referencing Task 8. 

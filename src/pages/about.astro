@@ -1,5 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Button } from '../components/ui/button';
+import { Icon } from 'astro-icon/components';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 
 const title = "About AiWebHub - Professional Web Development Agency";
 const description = "Learn about AiWebHub's expert web development team, our mission, and how we help businesses succeed online through custom web solutions.";
@@ -45,18 +48,30 @@ const description = "Learn about AiWebHub's expert web development team, our mis
 						</span>
 					</h2>
 					<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-						<div class="bg-gray-800/50 p-8 rounded-lg backdrop-blur-sm border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300">
-							<h3 class="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400 mb-4">Expertise</h3>
-							<p class="text-gray-300">Our team brings years of experience in web development and design, ensuring your project is in capable hands.</p>
-						</div>
-						<div class="bg-gray-800/50 p-8 rounded-lg backdrop-blur-sm border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300">
-							<h3 class="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400 mb-4">Affordability</h3>
-							<p class="text-gray-300">We offer competitive pricing without compromising on quality, making professional web development accessible.</p>
-						</div>
-						<div class="bg-gray-800/50 p-8 rounded-lg backdrop-blur-sm border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300">
-							<h3 class="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-blue-400 mb-4">Support</h3>
-							<p class="text-gray-300">We provide ongoing support and maintenance to ensure your website continues to perform at its best.</p>
-						</div>
+						<Card class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300">
+							<CardHeader>
+								<CardTitle class="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400 mb-4">Expertise</CardTitle>
+							</CardHeader>
+							<CardContent>
+								<p class="text-gray-300">Our team brings years of experience in web development and design, ensuring your project is in capable hands.</p>
+							</CardContent>
+						</Card>
+						<Card class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300">
+							<CardHeader>
+								<CardTitle class="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400 mb-4">Affordability</CardTitle>
+							</CardHeader>
+							<CardContent>
+								<p class="text-gray-300">We offer competitive pricing without compromising on quality, making professional web development accessible.</p>
+							</CardContent>
+						</Card>
+						<Card class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300">
+							<CardHeader>
+								<CardTitle class="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-blue-400 mb-4">Support</CardTitle>
+							</CardHeader>
+							<CardContent>
+								<p class="text-gray-300">We provide ongoing support and maintenance to ensure your website continues to perform at its best.</p>
+							</CardContent>
+						</Card>
 					</div>
 				</div>
 			</div>
@@ -73,12 +88,11 @@ const description = "Learn about AiWebHub's expert web development team, our mis
 				<p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
 					Let's create something amazing together. Contact us today to start your journey.
 				</p>
-				<a 
-					href="/contact" 
-					class="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white px-8 py-3 rounded-lg hover:opacity-90 transition inline-block"
-				>
-					Get Started
-				</a>
+				<Button asChild className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:opacity-90 transition">
+					<a href="/contact">
+						<Icon name="lucide:send" class="w-5 h-5 mr-2" /> Get Started
+					</a>
+				</Button>
 			</div>
 		</section>
 	</main>
