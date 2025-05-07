@@ -1,0 +1,141 @@
+Project Overview
+AIWebCraft is a modern web development agency website built with Next.js, focusing on showcasing professional web development services with a focus on AI-powered solutions. The site aims to convert visitors into leads through an attractive design, clear service offerings, and easy contact methods.
+Target Audience
+Small to medium-sized businesses seeking web development services
+Entrepreneurs and startups looking for landing pages and web presence
+Professionals seeking portfolio websites
+Companies interested in AI integration for their websites
+Design Requirements
+Visual Style
+Modern, sleek design with a dark theme
+Gradient color scheme using blues, purples, and pinks
+Floating animation elements and subtle motion effects
+Clean typography with clear hierarchy
+Branding
+Logo: AIWebCraft logo with gradient effect
+Color palette:
+Primary: Gradient from blue (#3b82f6) to purple (#8b5cf6) to pink (#ec4899)
+Background: Dark (#111111 for main background, #1a1a1a for cards)
+Text: White (#ffffff) for headings, light gray (#d1d5db) for body text
+Typography: Sans-serif fonts (Inter or similar)
+Technical Requirements
+Technology Stack
+Next.js 14+ with App Router
+Tailwind CSS for styling
+Framer Motion for animations
+Radix UI for accessible components
+React Hook Form for form handling
+EmailJS for contact form submission
+Performance Targets
+Core Web Vitals compliance
+Mobile-first responsive design
+Page load time under 2 seconds
+Accessibility compliance (WCAG 2.1 AA)
+Features and Pages
+Global Components
+Navigation Bar
+Logo
+Links to main pages (Home, Services, Portfolio, About, Team, Contact)
+Mobile-responsive menu
+Subtle animation on hover
+Call-to-action button for Contact
+Footer
+Company information
+Quick links to main pages
+Social media links
+Copyright information
+Home Page
+Hero Section
+Animated headline with gradient text effect
+Brief compelling description
+Two CTA buttons (Get Started, View Work)
+Floating gradient shapes background
+Services Overview
+Grid of 3 main service cards (Landing Pages, Portfolio Websites, Business Websites)
+Each card with icon, title, and brief description
+AI integration services highlight
+Process Section
+4-step process visualization (Discovery, Design, Development, Launch)
+Icons and brief descriptions for each step
+Testimonials/Reviews
+Client testimonial carousel
+Star ratings and client info
+Call to Action
+Compelling headline
+Contact button
+Services Page
+Detailed service cards for each offering:
+Landing Pages
+Features and benefits
+Example image
+Pricing information
+Portfolio Sites
+Features and benefits
+Example image
+Pricing information
+Business Websites
+Basic and Premium package comparison
+Features list with check marks
+Example image
+AI Integration Services
+AI capabilities and benefits
+Example image/visualization
+Call to action section
+Portfolio Page
+Grid of project cards
+Filtering capability by project type
+Each project with:
+Featured image
+Project title
+Brief description
+"View Project" link
+Animated transitions between projects
+About Page
+Company story and mission
+Core values
+Expertise areas
+Technologies we use
+Statistics/achievements
+Team Page
+Team member cards with:
+Photo
+Name
+Role
+Brief bio
+Social links
+Grid layout with responsive design
+Contact Page
+Contact form with:
+Name, email, phone fields
+Service selection dropdown
+Message field
+Submit button
+Form validation and submission feedback
+Alternative contact methods (email, phone)
+Office location/map (if applicable)
+User Flows
+Lead Generation Flow
+User lands on homepage → Views services → Clicks "Get Started" → Completes contact form → Receives confirmation
+Portfolio Exploration Flow
+User navigates to portfolio → Filters by project type → Views detailed project → Clicks CTA to contact
+Non-Functional Requirements
+SEO Optimization
+Meta tags for all pages
+Semantic HTML structure
+Optimized images with alt text
+Sitemap generation
+Analytics
+Google Analytics integration
+Form submission tracking
+User behavior tracking
+Future Enhancements (Phase 2)
+Blog section for content marketing
+Client portal/dashboard
+Live chat integration
+Multi-language support
+Dark/light theme toggle
+Success Metrics
+Increase in contact form submissions
+Longer average session duration
+Lower bounce rate
+Improved conversion rate from visitor to lead
