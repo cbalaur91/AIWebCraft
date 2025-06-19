@@ -28,7 +28,7 @@ const services = [
 
 export const ServicesSection = () => {
   return (
-    <div className="w-full h-[900px] sm:h-[800px] md:h-[800px] overflow-hidden">
+    <div className="w-full h-[1000px] sm:h-[800px] md:h-[800px] overflow-hidden">
       <Vortex
         backgroundColor="black"
         particleCount={400}
@@ -38,7 +38,7 @@ export const ServicesSection = () => {
         rangeSpeed={2.0}
         baseRadius={2}
         rangeRadius={4}
-        className="flex items-center flex-col justify-center px-4 md:px-10 py-4 w-full h-full"
+        className="flex items-center flex-col justify-center px-4 md:px-10 py-8 md:py-4 w-full h-full"
       >
         <div className="container mx-auto">
           <div className="mb-16 text-center">
@@ -50,7 +50,7 @@ export const ServicesSection = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 pb-8 md:pb-0">
             {services.map((service, index) => (
               <motion.div
                 key={index}
