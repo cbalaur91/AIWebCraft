@@ -38,10 +38,10 @@ const projects: Project[] = [
   {
     id: "project-3",
     title: "Romanian Food Festival",
-    category: "business",
+    category: "landing-page",
     image: "/Flag_of_Romania.png",
     description: "Experience authentic Romanian cuisine and culture in Rochester Hills, Michigan.",
-    tags: ["Business", "Next.js", "Dashboard"],
+    tags: ["Landing Page", "Next.js", "Dashboard"],
     url: "https://www.romanianfoodfestival.org/"
   },
   {
@@ -50,16 +50,16 @@ const projects: Project[] = [
     category: "landing-page",
     image: "/schooldesign.jpg",
     description: "Support our mission to create new classrooms for religious education",
-    tags: ["Landing Page", "E-commerce", "Animation"],
+    tags: ["Landing Page", "Fundraising", "Animation"],
     url: "https://fundraising-pogorarea-sfantului-duh.vercel.app/"
   },
   {
     id: "project-5",
     title: "True Tenant",
-    category: "portfolio",
+    category: "business",
     image: "/True_Tenant.png",
     description: "TruTenant helps landlords make informed decisions with tenant reviews and community feedback.",
-    tags: ["Portfolio", "React", "GSAP"],
+    tags: ["Business", "React", "GSAP"],
     url: "https://www.trutenant.com/"
   },
   {
@@ -70,6 +70,15 @@ const projects: Project[] = [
     description: "Track development, plan vaccinations, and access expert guidance—all in one beautifully designed, easy-to-use platform.",
     tags: ["Business", "Security", "Dashboard"],
     url: "https://www.nurturetrack.app/"
+  },
+  {
+    id: "project-7",
+    title: "88 Transpoort LLC",
+    category: "landing-page",
+    image: "/88transpoort-logo.jpeg",
+    description: " Join Chicago's premier car hauling company as an owner operator. Competitive rates, consistent loads, and unmatched support.",
+    tags: ["Landing Page", "Car Hauling", "Transportation"],
+    url: "https://www.88transpoortllc.com/" 
   },
 ]
 
@@ -142,7 +151,7 @@ export default function PortfolioPage() {
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
                     />
                   </div>
                   <CardContent className="p-6">
