@@ -98,7 +98,7 @@ export default function ContactPage() {
                 },
                 {
                   question: "How much does a website cost?",
-                  answer: "Website costs vary based on complexity, features, and scope. Our landing pages start at $1,500, portfolio sites at $2,000, and business websites at $3,500. We provide detailed quotes after understanding your specific requirements."
+                  answer: "Website costs vary based on complexity, features, and scope. Our landing pages start at $500, portfolio sites at $1,000, and business websites at $2,500. We provide detailed quotes after understanding your specific requirements."
                 },
               ].map((faq, index) => (
                 <div

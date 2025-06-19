@@ -11,21 +11,18 @@ const testimonials = [
     position: "CEO, TechStart",
     content: "AIWebHub transformed our online presence with a stunning website that perfectly captures our brand identity. Their team was professional, responsive, and delivered beyond our expectations.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80",
   },
   {
     name: "David Chen",
     position: "Founder, Innovate Design",
     content: "Working with AIWebHub was an incredible experience. They not only built us a beautiful website but also provided valuable insights that improved our user experience and conversion rates.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80",
   },
   {
     name: "Emily Rodriguez",
     position: "Marketing Director, GrowthHub",
     content: "The team at AIWebHub are true professionals. They delivered our project on time and on budget, with exceptional attention to detail. Our new site has received countless compliments.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80",
   },
 ]
 
@@ -64,15 +61,6 @@ export const TestimonialsSection = () => {
                 className="bg-[#1a1a1a] rounded-2xl p-8 shadow-xl"
               >
                 <div className="flex flex-col items-center md:flex-row md:items-start">
-                  <div className="shrink-0 mb-6 md:mb-0 md:mr-6">
-                    <div className="relative h-20 w-20 overflow-hidden rounded-full border-2 border-gray-700">
-                      <img
-                        src={testimonials[current].image}
-                        alt={testimonials[current].name}
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
-                  </div>
                   <div>
                     <div className="mb-3 flex">
                       {[...Array(testimonials[current].rating)].map((_, i) => (
