@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     siteName: 'AIWebHub',
     images: [
       {
-        url: '/AiWebHubLogo.jpg',
+        url: 'https://aiwebhub.io/AiWebHubLogo.jpg',
         width: 1200,
         height: 630,
         alt: 'AIWebHub - Innovative Web Solutions',
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AIWebHub - Modern Web Agency',
     description: 'Build beautiful, high-performing websites with AI-powered precision. Professional web solutions for your business.',
-    images: ['/AiWebHubLogo.jpg'],
+    images: ['https://aiwebhub.io/AiWebHubLogo.jpg'],
     creator: '@aiwebhub',
   },
   robots: {
