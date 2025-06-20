@@ -2,6 +2,37 @@ import { CheckCircle, Code, Globe, LineChart, Palette, Smartphone } from 'lucide
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Services - AIWebHub | Professional Web Design & Development',
+  description: 'Discover our professional web design and development services including landing pages, portfolio sites, and business websites. Get a custom quote for your project.',
+  keywords: 'web design services, web development, landing pages, portfolio websites, business websites, custom web applications, SEO optimization',
+  openGraph: {
+    title: 'Professional Web Services - AIWebHub',
+    description: 'Transform your business with our professional web design services. Landing pages, portfolios, and business websites that convert.',
+    url: 'https://aiwebhub.io/services',
+    siteName: 'AIWebHub',
+    images: [
+      {
+        url: 'https://aiwebhub.io/AiWebHubLogo.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'AIWebHub Services - Professional Web Solutions',
+      },
+    ],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Professional Web Services - AIWebHub',
+    description: 'Transform your business with our professional web design services. Landing pages, portfolios, and business websites.',
+    images: ['https://aiwebhub.io/AiWebHubLogo.jpg'],
+  },
+  alternates: {
+    canonical: '/services',
+  },
+}
 
 interface ServiceFeature {
   title: string;
@@ -65,8 +96,72 @@ const services: Service[] = [
 ]
 
 export default function ServicesPage() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Services - AIWebHub",
+    "description": "Professional web design and development services including landing pages, portfolio sites, and business websites.",
+    "url": "https://aiwebhub.io/services",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "AIWebHub",
+      "url": "https://aiwebhub.io",
+      "description": "Modern web agency specializing in AI-powered web solutions",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Web Design Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "Landing Pages",
+            "description": "Conversion-focused landing pages designed to turn visitors into customers",
+            "price": "500",
+            "priceCurrency": "USD",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "price": "500",
+              "priceCurrency": "USD",
+              "valueAddedTaxIncluded": false
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Portfolio Sites",
+            "description": "Showcase your work with elegantly designed portfolio websites",
+            "price": "1000",
+            "priceCurrency": "USD",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "price": "1000",
+              "priceCurrency": "USD",
+              "valueAddedTaxIncluded": false
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Business Websites",
+            "description": "Professional business websites that establish credibility and drive growth",
+            "price": "2500",
+            "priceCurrency": "USD",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "price": "2500",
+              "priceCurrency": "USD",
+              "valueAddedTaxIncluded": false
+            }
+          }
+        ]
+      }
+    }
+  }
+
   return (
-    <div className="bg-[#111111] pt-32 pb-20">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <div className="bg-[#111111] pt-32 pb-20">
       {/* Hero Section */}
       <div className="container mx-auto px-4 md:px-6">
         <div className="mx-auto max-w-3xl text-center">
@@ -200,6 +295,7 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   )
 }
