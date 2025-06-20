@@ -71,6 +71,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <meta property="og:image" content="https://aiwebhub.io/AiWebHubLogo.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="AIWebHub - Innovative Web Solutions" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta name="twitter:image" content="https://aiwebhub.io/AiWebHubLogo.jpg" />
+        <meta name="twitter:image:alt" content="AIWebHub - Innovative Web Solutions" />
+      </head>
       <body className={`${inter.className} bg-[#111111] min-h-screen`}>
         <Navbar />
         <main className="min-h-screen">{children}</main>
