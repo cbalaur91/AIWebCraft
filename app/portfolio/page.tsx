@@ -66,7 +66,7 @@ const projects: Project[] = [
     id: "project-6",
     title: "Nurture Track",
     category: "business",
-    image: "/web-app-manifest-512x512.png",
+    image: "/nurture-track.png",
     description: "Track development, plan vaccinations, and access expert guidance—all in one beautifully designed, easy-to-use platform.",
     tags: ["Business", "Security", "Dashboard"],
     url: "https://www.nurturetrack.app/"
