@@ -20,15 +20,19 @@ interface VortexProps {
 export const Vortex = (props: VortexProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef(null);
+  const animationIdRef = useRef<number>();
+  const isVisibleRef = useRef(true);
   
-  // Responsive particle count based on screen size
+  // Responsive particle count based on screen size and performance
   const getParticleCount = () => {
     const { innerWidth } = window;
     const baseCount = props.particleCount || 700;
     
     if (innerWidth < 768) return Math.min(baseCount, 300); // Mobile
-    if (innerWidth < 1440) return Math.min(baseCount, 400); // Tablet/Small Desktop
-    return Math.min(baseCount, 500); // Large Desktop (capped)
+    if (innerWidth < 1024) return Math.min(baseCount, 350); // Tablet
+    if (innerWidth < 1440) return Math.min(baseCount, 300); // Small Desktop
+    if (innerWidth < 2560) return Math.min(baseCount, 250); // Large Desktop
+    return Math.min(baseCount, 200); // 4K+ screens - very conservative
   };
   
   const particleCount = typeof window !== 'undefined' ? getParticleCount() : (props.particleCount || 400);
@@ -52,6 +56,20 @@ export const Vortex = (props: VortexProps) => {
   const noise3D = createNoise3D();
   let particleProps = new Float32Array(particlePropsLength);
   let center: [number, number] = [0, 0];
+  
+  // Performance monitoring
+  let lastFrameTime = 0;
+  let frameCount = 0;
+  let fpsSum = 0;
+  let avgFps = 60;
+  
+  // FPS throttling
+  const targetFps = typeof window !== 'undefined' && window.innerWidth > 1440 ? 30 : 60;
+  const frameInterval = 1000 / targetFps;
+  let lastDrawTime = 0;
+  
+  // Performance-based quality
+  let qualityLevel = 1; // 0 = low, 1 = medium, 2 = high
 
   const HALF_PI: number = 0.5 * Math.PI;
   const TAU: number = 2 * Math.PI;
@@ -109,6 +127,42 @@ export const Vortex = (props: VortexProps) => {
   };
 
   const draw = (canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) => {
+    // Pause animation if not visible
+    if (!isVisibleRef.current) {
+      animationIdRef.current = window.requestAnimationFrame(() => draw(canvas, ctx));
+      return;
+    }
+    
+    const currentTime = performance.now();
+    
+    // FPS throttling
+    if (currentTime - lastDrawTime < frameInterval) {
+      animationIdRef.current = window.requestAnimationFrame(() => draw(canvas, ctx));
+      return;
+    }
+    
+    // Performance monitoring
+    if (lastFrameTime > 0) {
+      const fps = 1000 / (currentTime - lastFrameTime);
+      fpsSum += fps;
+      frameCount++;
+      
+      if (frameCount >= 60) { // Update average every 60 frames
+        avgFps = fpsSum / frameCount;
+        frameCount = 0;
+        fpsSum = 0;
+        
+        // Adjust quality based on performance
+        if (avgFps < 25) {
+          qualityLevel = Math.max(0, qualityLevel - 1);
+        } else if (avgFps > 50 && qualityLevel < 2) {
+          qualityLevel = Math.min(2, qualityLevel + 1);
+        }
+      }
+    }
+    
+    lastFrameTime = currentTime;
+    lastDrawTime = currentTime;
     tick++;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -117,14 +171,22 @@ export const Vortex = (props: VortexProps) => {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     drawParticles(ctx);
-    renderGlow(canvas, ctx);
+    
+    // Conditional glow rendering based on quality level
+    if (qualityLevel > 0) {
+      renderGlow(canvas, ctx);
+    }
+    
     renderToScreen(canvas, ctx);
 
-    window.requestAnimationFrame(() => draw(canvas, ctx));
+    animationIdRef.current = window.requestAnimationFrame(() => draw(canvas, ctx));
   };
 
   const drawParticles = (ctx: CanvasRenderingContext2D) => {
-    for (let i = 0; i < particlePropsLength; i += particlePropCount) {
+    // Skip particles based on quality level for better performance
+    const step = qualityLevel === 0 ? particlePropCount * 2 : particlePropCount;
+    
+    for (let i = 0; i < particlePropsLength; i += step) {
       updateParticle(i, ctx);
     }
   };
@@ -202,9 +264,19 @@ export const Vortex = (props: VortexProps) => {
   ) => {
     const { innerWidth, innerHeight } = window;
     
-    // Limit canvas size for performance on large screens
-    const maxWidth = Math.min(innerWidth, 1920);
-    const maxHeight = Math.min(innerHeight, 1080);
+    // More aggressive canvas size limits based on screen size and quality
+    let maxWidth, maxHeight;
+    
+    if (innerWidth > 2560) { // 4K+ screens
+      maxWidth = Math.min(innerWidth * 0.6, 1440);
+      maxHeight = Math.min(innerHeight * 0.6, 900);
+    } else if (innerWidth > 1440) { // Large screens
+      maxWidth = Math.min(innerWidth * 0.75, 1600);
+      maxHeight = Math.min(innerHeight * 0.75, 1000);
+    } else { // Normal screens
+      maxWidth = Math.min(innerWidth, 1440);
+      maxHeight = Math.min(innerHeight, 900);
+    }
     
     canvas.width = maxWidth;
     canvas.height = maxHeight;
@@ -212,28 +284,40 @@ export const Vortex = (props: VortexProps) => {
     center[0] = 0.5 * canvas.width;
     center[1] = 0.5 * canvas.height;
     
-    // Scale canvas to fill container if needed
-    if (innerWidth > maxWidth || innerHeight > maxHeight) {
-      canvas.style.width = '100%';
-      canvas.style.height = '100%';
-    }
+    // Always scale canvas to fill container
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
   };
 
   const renderGlow = (
     canvas: HTMLCanvasElement,
     ctx: CanvasRenderingContext2D
   ) => {
-    ctx.save();
-    ctx.filter = "blur(8px) brightness(200%)";
-    ctx.globalCompositeOperation = "lighter";
-    ctx.drawImage(canvas, 0, 0);
-    ctx.restore();
+    const isLargeScreen = typeof window !== 'undefined' && window.innerWidth > 1440;
+    
+    // Adaptive glow based on screen size and quality level
+    if (qualityLevel === 2 || (!isLargeScreen && qualityLevel >= 1)) {
+      // Full quality glow
+      ctx.save();
+      ctx.filter = "blur(8px) brightness(200%)";
+      ctx.globalCompositeOperation = "lighter";
+      ctx.drawImage(canvas, 0, 0);
+      ctx.restore();
 
-    ctx.save();
-    ctx.filter = "blur(4px) brightness(200%)";
-    ctx.globalCompositeOperation = "lighter";
-    ctx.drawImage(canvas, 0, 0);
-    ctx.restore();
+      ctx.save();
+      ctx.filter = "blur(4px) brightness(200%)";
+      ctx.globalCompositeOperation = "lighter";
+      ctx.drawImage(canvas, 0, 0);
+      ctx.restore();
+    } else if (qualityLevel === 1) {
+      // Simplified glow for performance
+      ctx.save();
+      ctx.filter = isLargeScreen ? "blur(4px) brightness(150%)" : "blur(6px) brightness(175%)";
+      ctx.globalCompositeOperation = "lighter";
+      ctx.drawImage(canvas, 0, 0);
+      ctx.restore();
+    }
+    // No glow for qualityLevel 0 (handled by conditional call in draw function)
   };
 
   const renderToScreen = (
@@ -264,11 +348,29 @@ export const Vortex = (props: VortexProps) => {
       }
     };
     
+    // Intersection Observer for performance
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          isVisibleRef.current = entry.isIntersecting;
+        });
+      },
+      { threshold: 0.1 } // Trigger when 10% visible
+    );
+    
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+    
     window.addEventListener("resize", handleResize);
     
     return () => {
       clearTimeout(timeoutId);
       window.removeEventListener("resize", handleResize);
+      if (animationIdRef.current) {
+        cancelAnimationFrame(animationIdRef.current);
+      }
+      observer.disconnect();
     };
   }, []);
 

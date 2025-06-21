@@ -31,13 +31,13 @@ export const ServicesSection = () => {
     <div className="w-full h-[1000px] sm:h-[800px] md:h-[800px] overflow-hidden">
       <Vortex
         backgroundColor="black"
-        particleCount={400}
+        particleCount={300}
         baseHue={220}
         rangeY={600}
-        baseSpeed={0.5}
-        rangeSpeed={2.0}
+        baseSpeed={0.4}
+        rangeSpeed={1.5}
         baseRadius={2}
-        rangeRadius={4}
+        rangeRadius={3}
         className="flex items-center flex-col justify-center px-4 md:px-10 py-8 md:py-4 w-full h-full"
       >
         <div className="container mx-auto">
