@@ -19,18 +19,18 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://aiwebhub.io'),
+  metadataBase: new URL('https://www.aiwebhub.io'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: 'AIWebHub - Innovative Web Solutions',
     description: 'Transform your digital presence with AI-powered web design. We create stunning landing pages, portfolios, and business websites that convert.',
-    url: 'https://aiwebhub.io',
+    url: 'https://www.aiwebhub.io',
     siteName: 'AIWebHub',
     images: [
       {
-        url: 'https://aiwebhub.io/thumbnails/logo-thumbnail.png',
+        url: 'https://www.aiwebhub.io/thumbnails/logo-thumbnail.png',
         width: 1200,
         height: 630,
         alt: 'AIWebHub - Innovative Web Solutions',
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AIWebHub - Modern Web Agency',
     description: 'Build beautiful, high-performing websites with AI-powered precision. Professional web solutions for your business.',
-    images: ['https://aiwebhub.io/thumbnails/logo-thumbnail.png'],
+    images: ['https://www.aiwebhub.io/thumbnails/logo-thumbnail.png'],
     creator: '@aiwebhub',
   },
   robots: {
@@ -83,12 +83,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta property="og:image" content="https://aiwebhub.io/thumbnails/logo-thumbnail.png" />
+        <meta property="og:image" content="https://www.aiwebhub.io/thumbnails/logo-thumbnail.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="AIWebHub - Innovative Web Solutions" />
         <meta property="og:image:type" content="image/png" />
-        <meta name="twitter:image" content="https://aiwebhub.io/thumbnails/logo-thumbnail.png" />
+        <meta name="twitter:image" content="https://www.aiwebhub.io/thumbnails/logo-thumbnail.png" />
         <meta name="twitter:image:alt" content="AIWebHub - Innovative Web Solutions" />
         <script
           type="application/ld+json"
@@ -98,9 +98,9 @@ export default function RootLayout({
               "@type": "Organization",
               "name": "AIWebHub",
               "alternateName": "AIWebHub - Innovative Web Solutions",
-              "url": "https://aiwebhub.io",
-              "logo": "https://aiwebhub.io/logo/logo.png",
-              "image": "https://aiwebhub.io/thumbnails/logo-thumbnail.png",
+              "url": "https://www.aiwebhub.io",
+              "logo": "https://www.aiwebhub.io/logo/logo.png",
+              "image": "https://www.aiwebhub.io/thumbnails/logo-thumbnail.png",
               "description": "Modern web agency building beautiful, high-performing websites with AI-powered precision",
               "sameAs": [
                 "https://twitter.com/aiwebhub"
