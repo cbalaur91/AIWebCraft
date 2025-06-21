@@ -175,8 +175,11 @@ export default function ServicesPage() {
       </div>
 
       {/* Featured Services Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="relative py-20 overflow-hidden">
+        {/* Background gradient accent */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-96 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-3xl rounded-full opacity-30"></div>
+        
+        <div className="container relative mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {services.map((service) => (
               <Card
@@ -229,8 +232,11 @@ export default function ServicesPage() {
       </section>
 
       {/* Additional Services Section */}
-      <section className="py-20 bg-black">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="relative py-20 bg-black overflow-hidden">
+        {/* Background gradient accent */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-96 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-3xl rounded-full opacity-30"></div>
+        
+        <div className="container relative mx-auto px-4 md:px-6">
           <div className="mx-auto max-w-3xl text-center mb-16">
             <h2 className="text-3xl font-bold tracking-tight text-white">Additional Services</h2>
             <p className="mt-4 text-gray-400">
@@ -269,8 +275,11 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="relative py-20 overflow-hidden">
+        {/* Background gradient accent */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-96 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-3xl rounded-full opacity-30"></div>
+        
+        <div className="container relative mx-auto px-4 md:px-6">
           <div className="rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-0.5">
             <div className="rounded-2xl bg-[#1a1a1a] px-6 py-12 sm:px-12 sm:py-16">
               <div className="mx-auto max-w-3xl text-center">

@@ -111,8 +111,11 @@ export default function PortfolioPage() {
       </div>
 
       {/* Portfolio Filter */}
-      <section className="py-12">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="relative py-12 overflow-hidden">
+        {/* Background gradient accent */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-96 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-3xl rounded-full opacity-30"></div>
+        
+        <div className="container relative mx-auto px-4 md:px-6">
           <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
             {categories.map((category) => (
               <Button
@@ -185,8 +188,11 @@ export default function PortfolioPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-black">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="relative py-20 bg-black overflow-hidden">
+        {/* Background gradient accent */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-96 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-3xl rounded-full opacity-30"></div>
+        
+        <div className="container relative mx-auto px-4 md:px-6">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-white">
               Have a project in mind?

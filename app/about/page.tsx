@@ -1,4 +1,4 @@
-import { Option as Motion, Scroll } from 'lucide-react'
+import { Scroll } from 'lucide-react'
 
 export default function AboutPage() {
   return (
@@ -16,8 +16,11 @@ export default function AboutPage() {
       </div>
 
       {/* Mission Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="relative py-20 overflow-hidden">
+        {/* Background gradient accent */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-96 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-3xl rounded-full opacity-30"></div>
+        
+        <div className="container relative mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2 items-center">
             <div>
               <h2 className="text-3xl font-bold tracking-tight text-white mb-6">Our Mission</h2>
@@ -30,8 +33,17 @@ export default function AboutPage() {
             </div>
             <div className="relative">
               <div className="aspect-video rounded-xl overflow-hidden bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 p-1">
-                <div className="bg-black h-full w-full rounded-lg flex items-center justify-center">
-                  <Motion className="h-20 w-20 text-white opacity-80" />
+                <div className="bg-black h-full w-full rounded-lg overflow-hidden">
+                  <video
+                    className="w-full h-full object-cover"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                  >
+                    <source src="/video/Website_Mission_Video_Creation.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
               </div>
               <div className="absolute -bottom-6 -right-6 h-24 w-24 rounded-xl bg-[#1a1a1a] flex items-center justify-center shadow-xl">
@@ -43,8 +55,11 @@ export default function AboutPage() {
       </section>
 
       {/* Values Section */}
-      <section className="py-20 bg-black">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="relative py-20 bg-black overflow-hidden">
+        {/* Background gradient accent */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-96 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-3xl rounded-full opacity-30"></div>
+        
+        <div className="container relative mx-auto px-4 md:px-6">
           <h2 className="text-3xl font-bold tracking-tight text-white text-center mb-16">Our Values</h2>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
             {[
