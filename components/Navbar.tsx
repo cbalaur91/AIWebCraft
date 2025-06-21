@@ -31,6 +31,27 @@ export const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsMenuOpen(false)
+      }
+    }
+
+    if (isMenuOpen) {
+      document.addEventListener('keydown', handleEscape)
+      // Prevent body scroll when menu is open
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape)
+      document.body.style.overflow = 'unset'
+    }
+  }, [isMenuOpen])
+
   return (
     <nav
       className={cn(
@@ -81,20 +102,29 @@ export const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="md:hidden flex flex-col bg-black/95 backdrop-blur-md px-4 py-8 border-t border-gray-800">
-          {NavLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-lg font-medium text-white/80 hover:text-white py-3 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
+        <>
+          {/* Backdrop overlay */}
+          <div 
+            className="fixed inset-0 bg-black/50 z-40 md:hidden"
+            onClick={() => setIsMenuOpen(false)}
+          />
+          
+          {/* Mobile Menu */}
+          <div className="md:hidden flex flex-col bg-black/95 backdrop-blur-md px-4 py-8 border-t border-gray-800 relative z-50">
+            {NavLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-lg font-medium text-white/80 hover:text-white py-3 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </>
       )}
     </nav>
   )
