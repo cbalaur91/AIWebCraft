@@ -1,4 +1,5 @@
-import { Scroll } from 'lucide-react'
+import { Scroll, Lightbulb, Award, Users, Eye, Zap, Target } from 'lucide-react'
+import { GlowingEffect } from '@/components/ui/glowing-effect'
 
 export default function AboutPage() {
   return (
@@ -66,31 +67,62 @@ export default function AboutPage() {
               {
                 title: "Innovation",
                 description: "We push boundaries and explore new technologies to create cutting-edge solutions.",
+                icon: <Lightbulb className="h-6 w-6" />,
               },
               {
                 title: "Quality",
                 description: "We never compromise on quality, ensuring every pixel and line of code meets our high standards.",
+                icon: <Award className="h-6 w-6" />,
               },
               {
                 title: "Collaboration",
                 description: "We work closely with our clients, treating their projects as if they were our own.",
+                icon: <Users className="h-6 w-6" />,
               },
               {
                 title: "Transparency",
                 description: "We believe in open communication and keeping our clients informed at every stage.",
+                icon: <Eye className="h-6 w-6" />,
               },
               {
                 title: "Adaptability",
                 description: "We stay agile and responsive to changing trends and client needs.",
+                icon: <Zap className="h-6 w-6" />,
               },
               {
                 title: "Results",
                 description: "We focus on creating websites that achieve tangible, measurable results for our clients.",
+                icon: <Target className="h-6 w-6" />,
               },
             ].map((value, index) => (
-              <div key={index} className="bg-[#1a1a1a] rounded-xl p-8 shadow-xl border-t-2 border-transparent hover:border-t-blue-500 transition-all duration-300">
-                <h3 className="text-xl font-bold text-white mb-4">{value.title}</h3>
-                <p className="text-gray-400">{value.description}</p>
+              <div key={index} className="relative min-h-[280px]">
+                <div className="relative h-full rounded-xl border-[0.75px] border-gray-700 p-2">
+                  <GlowingEffect
+                    spread={40}
+                    glow={true}
+                    disabled={false}
+                    proximity={64}
+                    inactiveZone={0.01}
+                    borderWidth={2}
+                  />
+                  <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-lg border-[0.75px] border-gray-700 bg-[#1a1a1a] p-6 shadow-xl">
+                    <div className="relative flex flex-1 flex-col justify-between gap-4">
+                      <div className="w-fit rounded-lg border-[0.75px] border-gray-600 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 p-3">
+                        <div className="text-white">
+                          {value.icon}
+                        </div>
+                      </div>
+                      <div className="space-y-4">
+                        <h3 className="text-xl font-bold text-white leading-tight">
+                          {value.title}
+                        </h3>
+                        <p className="text-gray-400 text-sm leading-relaxed">
+                          {value.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
