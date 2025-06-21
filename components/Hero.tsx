@@ -18,7 +18,7 @@ export const Hero = () => {
   }, []);
 
   return (
-    <div className="relative overflow-hidden bg-transparent pt-32 pb-20 md:pt-40 md:pb-32">
+    <div className="relative min-h-screen overflow-hidden bg-transparent flex items-center justify-center">
       {/* Video Background */}
       <div className="absolute inset-0 -z-10">
         <video
@@ -77,7 +77,7 @@ export const Hero = () => {
         />
       </div>
 
-      <div className="container relative mx-auto px-4 text-center md:px-6">
+      <div className="container relative mx-auto px-4 text-center md:px-6 pt-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
