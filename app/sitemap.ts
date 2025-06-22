@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next'
 export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://aiwebhub.io'
+  const baseUrl = 'https://www.aiwebhub.io'
   
   return [
     {

@@ -78,6 +78,7 @@ export const Navbar = () => {
               <Link
                 key={link.href}
                 href={link.href}
+                prefetch={true}
                 className="text-sm font-medium text-white/80 hover:text-white transition-colors"
               >
                 {link.label}
@@ -117,6 +118,7 @@ export const Navbar = () => {
               <Link
                 key={link.href}
                 href={link.href}
+                prefetch={true}
                 className="text-lg font-medium text-white/80 hover:text-white py-3 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
