@@ -39,7 +39,7 @@ const projects: Project[] = [
     id: "project-3",
     title: "Romanian Food Festival",
     category: "landing-page",
-    image: "/Flag_of_Romania.png",
+    image: "/RFF.png",
     description: "Experience authentic Romanian cuisine and culture in Rochester Hills, Michigan.",
     tags: ["Landing Page", "Next.js", "Dashboard"],
     url: "https://www.romanianfoodfestival.org/"
